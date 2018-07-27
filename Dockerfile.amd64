@@ -81,10 +81,15 @@ RUN cd /src/web \
 # merge
 ################################################################################
 FROM system
-LABEL maintainer="fcwu.tw@gmail.com"
 
 COPY --from=builder /src/web/dist/ /usr/local/lib/web/frontend/
 COPY image /
+
+RUN apt-get update \
+    && apt-get install -y \
+      language-pack-ja-base language-pack-ja \
+      ibus-anthy \
+      fonts-takao
 
 EXPOSE 80
 WORKDIR /root
