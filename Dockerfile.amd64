@@ -92,7 +92,7 @@ RUN apt-get update \
       fonts-takao
 
 RUN apt-get install -y aptitude && \
-    aptitude install -y ssh \
+    aptitude install -y ssh && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 EXPOSE 80
